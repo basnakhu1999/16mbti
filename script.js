@@ -44,21 +44,27 @@ const noBtn = document.getElementById('noBtn');
 const resultElement = document.getElementById('result');
 const personalityElement = document.getElementById('personality');
 const descriptionElement = document.getElementById('description');
+const startBtn = document.getElementById('startBtn');
+const container = document.querySelector('.container');
+const restartBtn = document.getElementById('restartBtn');
 
 function showQuestion() {
-    questionElement.textContent = questions[currentQuestion];
+    if (currentQuestion < questions.length) {
+        questionElement.textContent = questions[currentQuestion];
+    } else {
+        showResult();
+    }
 }
 
 function showResult() {
     const personalityType = calculatePersonalityType();
     personalityElement.textContent = personalityType;
     descriptionElement.textContent = mbtiTypes[personalityType];
+    resultElement.classList.remove('hidden');
     resultElement.classList.add('show');
 }
 
 function calculatePersonalityType() {
-    // Simple logic to determine personality type based on answers
-    // This is a simplified version and not a real MBTI test
     let type = "";
     type += answers[0] ? "E" : "I";
     type += answers[1] ? "S" : "N";
@@ -67,24 +73,29 @@ function calculatePersonalityType() {
     return type;
 }
 
+function startGame() {
+    container.classList.remove('hidden');
+    startBtn.classList.add('hidden');
+    showQuestion();
+}
+
+function restartGame() {
+    currentQuestion = 0;
+    answers = [];
+    resultElement.classList.remove('show');
+    resultElement.classList.add('hidden');
+    showQuestion();
+}
+
+startBtn.addEventListener('click', startGame);
 yesBtn.addEventListener('click', () => {
     answers.push(true);
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-        showQuestion();
-    } else {
-        showResult();
-    }
+    showQuestion();
 });
-
 noBtn.addEventListener('click', () => {
     answers.push(false);
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-        showQuestion();
-    } else {
-        showResult();
-    }
+    showQuestion();
 });
-
-showQuestion();
+restartBtn.addEventListener('click', restartGame);

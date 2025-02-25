@@ -1,36 +1,109 @@
+/* General Styles */
 body {
     font-family: 'Sriracha', cursive;
     background-color: #f4f4f4;
     color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
+/* Navigation Menu */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+nav .nav-links a:hover {
+    color: #007bff;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    font-family: 'Sriracha', cursive;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero button:hover {
+    background-color: #f4f4f4;
+}
+
+/* Game Container */
 .container {
     text-align: center;
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    max-width: 600px;
+    margin: 50px auto;
 }
 
 #game {
     margin-bottom: 20px;
 }
 
+#question {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 button {
     font-family: 'Sriracha', cursive;
     font-size: 1.2rem;
     padding: 10px 20px;
-    margin: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -43,14 +116,26 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* Result Section */
 #result {
-    display: none;
-}
-
-.hidden {
     display: none;
 }
 
 #result.show {
     display: block;
+}
+
+#result h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#result p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
 }

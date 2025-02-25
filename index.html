@@ -8,19 +8,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>15 Questions Guessing Game</h1>
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="logo">Personality Game</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Play</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Discover Your Personality</h1>
+        <p>Take the 15 Questions Guessing Game to find out your unique personality type!</p>
+        <button id="startBtn">Start Game</button>
+    </header>
+
+    <!-- Game Section -->
+    <div class="container hidden">
         <div id="game">
             <p id="question"></p>
-            <button id="yesBtn">Yes</button>
-            <button id="noBtn">No</button>
+            <div class="buttons">
+                <button id="yesBtn">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
         </div>
         <div id="result" class="hidden">
             <h2>Your Personality Type:</h2>
             <p id="personality"></p>
             <p id="description"></p>
+            <button id="restartBtn">Play Again</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
