@@ -1,48 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>15 Questions Guessing Game</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16MBTI Pro | Free Personality Test & In-Depth Type Analysis</title>
+  <meta name="description" content="Take a professional 16 MBTI-style personality test in English. Get in-depth analysis for all 16 personality types, strengths, blind spots, career fit, and relationship style.">
+  <meta name="keywords" content="MBTI test, 16 personalities, personality test, type analysis, career fit, relationship style">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="16MBTI Pro">
+  <link rel="canonical" href="https://example.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="16MBTI Pro | Free Personality Test & In-Depth Type Analysis">
+  <meta property="og:description" content="Discover your personality type and read detailed, practical insights.">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="16MBTI Pro | Free Personality Test & In-Depth Type Analysis">
+  <meta name="twitter:description" content="Discover your personality type and read detailed, practical insights.">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "16MBTI Pro",
+      "url": "https://example.com/",
+      "description": "A free personality testing website with in-depth analysis of 16 MBTI-style profiles."
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation Menu -->
-    <nav>
-        <div class="logo">Personality Game</div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Play</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+  <header class="hero" id="top">
+    <nav class="top-nav">
+      <a href="#top" class="brand">16MBTI Pro</a>
+      <div class="nav-links">
+        <a href="#test">Test</a>
+        <a href="#directory">Types</a>
+        <a href="#faq">FAQ</a>
+      </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>Discover Your Personality</h1>
-        <p>Take the 15 Questions Guessing Game to find out your unique personality type!</p>
-        <button id="startBtn">Start Game</button>
-    </header>
-
-    <!-- Game Section -->
-    <div class="container hidden">
-        <div id="game">
-            <p id="question"></p>
-            <div class="buttons">
-                <button id="yesBtn">Yes</button>
-                <button id="noBtn">No</button>
-            </div>
-        </div>
-        <div id="result" class="hidden">
-            <h2>Your Personality Type:</h2>
-            <p id="personality"></p>
-            <p id="description"></p>
-            <button id="restartBtn">Play Again</button>
-        </div>
+    <div class="hero-content">
+      <p class="tag">PERSONALITY INSIGHTS PLATFORM</p>
+      <h1>Free 16 Personality Test with Detailed, Actionable Analysis</h1>
+      <p class="subtitle">
+        Understand your core personality pattern across Energy, Information, Decision,
+        and Lifestyle preferences. Get practical guidance for work, growth, and relationships.
+      </p>
+      <a class="primary-btn" href="#test">Start the Test</a>
     </div>
+  </header>
 
-    <script src="script.js"></script>
+  <main>
+    <section class="features" aria-label="Platform highlights">
+      <article>
+        <h2>Professional UX</h2>
+        <p>Clean test flow, progress tracking, one-click back navigation, and mobile-friendly layout.</p>
+      </article>
+      <article>
+        <h2>Deeper Results</h2>
+        <p>Each type includes strengths, blind spots, career fit, and relationship style.</p>
+      </article>
+      <article>
+        <h2>Built to Scale</h2>
+        <p>Simple architecture ready for your next phase: user accounts, saved reports, and premium content.</p>
+      </article>
+    </section>
+
+    <section id="test" class="test-card" aria-live="polite">
+      <div class="card-head">
+        <h2>Personality Test</h2>
+        <p>Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="stepLabel">Question 1 / 16</span>
+          <span id="dimensionLabel">Dimension E / I</span>
+        </div>
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="question-box">
+        <p id="questionText"></p>
+      </div>
+
+      <div id="scaleButtons" class="scale-buttons" aria-label="Answer scale"></div>
+      <p class="scale-help">1 = Strongly Disagree · 3 = Neutral · 5 = Strongly Agree</p>
+
+      <div class="action-row">
+        <button id="backBtn" class="ghost-btn" type="button">Back</button>
+      </div>
+
+      <section id="resultPanel" class="result-panel hidden" aria-label="Test result">
+        <h3>Your Personality Result</h3>
+        <p class="result-type" id="resultType"></p>
+        <p class="result-name" id="resultName"></p>
+        <p id="resultSummary"></p>
+
+        <div id="traitScores" class="trait-scores"></div>
+
+        <div class="result-grid">
+          <article>
+            <h4>Strengths</h4>
+            <ul id="strengthsList"></ul>
+          </article>
+          <article>
+            <h4>Blind Spots</h4>
+            <ul id="blindSpotsList"></ul>
+          </article>
+          <article>
+            <h4>Career Fit</h4>
+            <ul id="careerFitList"></ul>
+          </article>
+          <article>
+            <h4>Relationship Style</h4>
+            <p id="relationshipStyle"></p>
+          </article>
+        </div>
+
+        <button id="restartBtn" class="primary-btn" type="button">Retake Test</button>
+      </section>
+    </section>
+
+    <section id="directory" class="directory" aria-label="All personality types">
+      <div class="section-heading">
+        <h2>Explore All 16 Personality Types</h2>
+        <p>A quick directory view. Your result will highlight one profile with full detail above.</p>
+      </div>
+      <div id="typeDirectory" class="type-grid"></div>
+    </section>
+
+    <section id="faq" class="faq" aria-label="Frequently asked questions">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Is this an official MBTI assessment?</summary>
+        <p>No. This is an MBTI-style educational tool for self-reflection and growth planning.</p>
+      </details>
+      <details>
+        <summary>How should I use my result?</summary>
+        <p>Use it as a starting point. Compare your profile with your goals, behavior, and feedback from others.</p>
+      </details>
+      <details>
+        <summary>Can I customize this product later?</summary>
+        <p>Yes. The code is organized so you can add accounts, report exports, analytics, and custom design layers.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 16MBTI Pro. Built for modern personality discovery experiences.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
